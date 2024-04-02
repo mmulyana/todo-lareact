@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => time()
         ]);
 
-        Project::factory()->count(10)->hasTasks(10)->create();
+        Project::factory()->count(30)->hasTasks(20)->create();
 
     }
 }
