@@ -1,9 +1,9 @@
+import Pagination from "@/Components/Pagination";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 
 export default function Index({ auth, projects }) {
-    const { data } = projects;
-    console.log(data)
+    const { data, meta } = projects;
     return (
         <Authenticated
             user={auth.user}
@@ -47,7 +47,10 @@ export default function Index({ auth, projects }) {
                                                     {project.id}
                                                 </td>
                                                 <td className="px-3 py-2">
-                                                    <img src={project.image_path} className='h-20 w-auto'/>
+                                                    <img
+                                                        src={project.image_path}
+                                                        className="h-20 w-auto"
+                                                    />
                                                 </td>
                                                 <td className="px-3 py-2">
                                                     {project.name}
@@ -61,10 +64,31 @@ export default function Index({ auth, projects }) {
                                                 <td className="px-3 py-2">
                                                     {project.createdBy.name}
                                                 </td>
+                                                <td className="px-3 py-2">
+                                                    <Link
+                                                        href={route(
+                                                            "project.edit",
+                                                            project.id
+                                                        )}
+                                                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1"
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                    <Link
+                                                        href={route(
+                                                            "project.destroy",
+                                                            project.id
+                                                        )}
+                                                        className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1"
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                </td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
+                                <Pagination links={meta.links} />
                             </div>
                         </div>
                     </div>
