@@ -1,7 +1,6 @@
 import { Link } from "@inertiajs/react";
 
-export default function Pagination({ links, queryParams }) {
-    console.log(queryParams);
+export default function Pagination({ links, queryParams = {} }) {
     return (
         <nav className="mt-4 gap-4 flex justify-end">
             {links.map((link, index) => (
